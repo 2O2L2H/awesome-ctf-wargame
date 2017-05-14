@@ -12,9 +12,9 @@ The corresponding ctf problem and wargame will be curated based on each required
 
 #### 3. Overwrite LR + shellCode injection
 
-#### 4. Environment variable usage
+#### 4. Overwrite LR + Environment variable usage
 
-#### 5. Ret2Libc : Return-to-Libc
+#### 5. Ret2Libc (Return-to-Libc)
 
 
 ### (2) Format String
