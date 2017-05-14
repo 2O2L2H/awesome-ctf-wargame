@@ -8,11 +8,19 @@ The corresponding ctf problem and wargame will be curated based on each required
 
 #### 1. Overwrite local variable
 
-#### 2. Overwrite LR (to be other function like flag printing)
+- x32 : Easy - [Protostar Stack0](https://exploit-exercises.com/protostar/stack0/), [Protostar Stack1](https://exploit-exercises.com/protostar/stack1/)
 
-#### 3. Overwrite LR + shellCode injection
+#### 2. Environment variable usage
 
-#### 4. Overwrite LR + Environment variable usage
+- x32 : Easy - [Protostar Stack2](https://exploit-exercises.com/protostar/stack2/)
+
+#### 3. Overwrite LR (to be other function like flag printing)
+
+- x32 : Easy - [Protostar Stack3](https://exploit-exercises.com/protostar/stack3/), [Protostar Stack4](https://exploit-exercises.com/protostar/stack4/)
+
+#### 4. Overwrite LR + shellCode injection
+
+- x32 : Easy - [Protostar Stack5](https://exploit-exercises.com/protostar/stack5/)
 
 #### 5. Ret2Libc (Return-to-Libc)
 
@@ -24,7 +32,7 @@ The corresponding ctf problem and wargame will be curated based on each required
 #### 2. Arbitrary memory write using `%n`
 
 - Best : ?
-- x32 : [Protostar Format1](https://exploit-exercises.com/protostar/format1/)
+- x32 : Easy - [Protostar Format1](https://exploit-exercises.com/protostar/format1/)
 
 
 ### (3) ROP (Return Oriented Programming)
