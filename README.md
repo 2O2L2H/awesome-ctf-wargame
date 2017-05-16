@@ -35,9 +35,10 @@ The corresponding ctf problem and wargame will be curated based on each required
 
 #### 1. Arbitrary memory read
 
-#### 2. Arbitrary memory write using `%n`
+#### 2. Direct Parameter Access (`n$`)
 
-- Best : ?
+#### 3. Arbitrary memory write using `%n`
+
 - x32 : Easy - [Protostar Format1](https://exploit-exercises.com/protostar/format1/)
 
 
