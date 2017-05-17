@@ -34,7 +34,7 @@ The corresponding ctf problem and wargame will be curated based on each required
 
 | Difficulty | Platform | Exercise |
 |------------|----------|----------|
-| Easy | x86 | [(Protostar) Stack3](https://exploit-exercises.com/protostar/stack3/), [Protostar Stack4](https://exploit-exercises.com/protostar/stack4/), [(root-me) x86 BoF basic2](https://www.root-me.org/en/Challenges/App-System/ |
+| Easy | x86 | [(Protostar) Stack3](https://exploit-exercises.com/protostar/stack3/), [Protostar Stack4](https://exploit-exercises.com/protostar/stack4/), [(root-me) x86 BoF basic2](https://www.root-me.org/en/Challenges/App-System/) |
 |  | x64 |  [(root-me) x64 BoF basic](https://www.root-me.org/en/Challenges/App-System/ELF-x64-Stack-buffer-overflow-basic) |
 
 - x32 : Easy - [(Protostar) Stack3](https://exploit-exercises.com/protostar/stack3/), [Protostar Stack4](https://exploit-exercises.com/protostar/stack4/), [(root-me) x86 BoF basic2](https://www.root-me.org/en/Challenges/App-System/ELF-x86-Stack-buffer-overflow-basic-2)
