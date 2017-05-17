@@ -6,7 +6,7 @@ The corresponding ctf problem and wargame will be curated based on each required
 
 :exclamation:  You may need the login account for browsing each wargame properly.
 
-## System hacking, Pwnable
+## System hacking / Pwnable
 
 ### :pencil:  Wargames
 
@@ -16,7 +16,7 @@ The corresponding ctf problem and wargame will be curated based on each required
 | Medium | [(Root-me) App System](https://www.root-me.org/en/Challenges/App-System/), [(PwnerRank) Binary Exploitation](https://www.pwnerrank.com/categories/binary-exploitation/) |
 | High | [Pwnable.kr](http://pwnable.kr/) |
 
-### (0) TIP  :+1: 
+### TIP  :+1: 
 
 - Generate and search pattern string for exploit development : [exploit-pattern @github](https://github.com/Svenito/exploit-pattern)
 - Multi-Architecture GDB Enhanced Features for Exploiters & Reverse-Engineers : [gef @github](https://github.com/hugsy/gef)
@@ -24,21 +24,21 @@ The corresponding ctf problem and wargame will be curated based on each required
 
 ### (1) BoF (Buffer Overflow)
 
-#### 1. Overwrite local variable
+#### 1.1 Overwrite local variable
 
 
 | Difficulty | Platform | Exercise |
 |------------|----------|----------|
 | Easy | x86 |  [(Protostar) Stack0](https://exploit-exercises.com/protostar/stack0/), [(Protostar) Stack1](https://exploit-exercises.com/protostar/stack1/), [(root-me) x86 BoF basic1](https://www.root-me.org/en/Challenges/App-System/ELF-x86-Stack-buffer-overflow-basic-1) |
 
-#### 2. Environment variable usage
+#### 1.2 Environment variable usage
 
 | Difficulty | Platform | Exercise |
 |------------|----------|----------|
 | Easy | x86 |  [(Protostar) Stack2](https://exploit-exercises.com/protostar/stack2/) |
 
 
-#### 3. Overwrite LR (to be other function like flag printing)
+#### 1.3 Overwrite LR (to be other function like flag printing)
 
 | Difficulty | Platform | Exercise |
 |------------|----------|----------|
@@ -46,22 +46,22 @@ The corresponding ctf problem and wargame will be curated based on each required
 |  | x64 |  [(root-me) x64 BoF basic](https://www.root-me.org/en/Challenges/App-System/ELF-x64-Stack-buffer-overflow-basic) |
 
 
-#### 4. Overwrite LR + shellCode injection
+#### 1.4 Overwrite LR + shellCode injection
 
 | Difficulty | Platform | Exercise |
 |------------|----------|----------|
 | Easy | x86 | [(Protostar) Stack5](https://exploit-exercises.com/protostar/stack5/) |
 
-#### 5. Ret2Libc (Return-to-Libc)
+#### 1.5 Ret2Libc (Return-to-Libc)
 
 
 ### (2) Format String
 
-#### 1. Arbitrary memory read
+#### 2.1 Arbitrary memory read
 
-#### 2. Direct Parameter Access (`n$`)
+#### 2.2 Direct Parameter Access (`n$`)
 
-#### 3. Arbitrary memory write using `%n`
+#### 2.3 Arbitrary memory write using `%n`
 
 | Difficulty | Platform | Exercise |
 |------------|----------|----------|
