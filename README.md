@@ -4,7 +4,7 @@
 
 The corresponding ctf problem and wargame will be curated based on each required skill.
 
-## System
+## :pencil:  Wargames on system hacking
 
 - Easy
     - [Exploit-exercise : Protostar](https://exploit-exercises.com/protostar/) : BoF, Format String, Heap, Network 
@@ -14,7 +14,7 @@ The corresponding ctf problem and wargame will be curated based on each required
 
 ### (1) BoF (Buffer Overflow)
 
-####  TIP  :+1:
+#### :+1:  TIP  
 
 - Generate and search pattern string for exploit development : [exploit-pattern @github](https://github.com/Svenito/exploit-pattern)
 
