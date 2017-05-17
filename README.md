@@ -14,7 +14,7 @@ The corresponding ctf problem and wargame will be curated based on each required
 
 ### (1) BoF (Buffer Overflow)
 
-#### :heart: TIP!
+####  TIP  :+1:
 
 - Generate and search pattern string for exploit development : [exploit-pattern @github](https://github.com/Svenito/exploit-pattern)
 
