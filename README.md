@@ -2,7 +2,9 @@
 
 **Writeup oriented CTF skill improvement**
 
-The corresponding ctf problem and wargame will be curated based on each required skill.
+The corresponding ctf problem and wargame will be curated based on each required skill. 
+
+:caution: You may need the login account for browsing each wargame properly.
 
 ## :pencil:  Wargames on system hacking
 
@@ -27,16 +29,12 @@ The corresponding ctf problem and wargame will be curated based on each required
 |------------|----------|----------|
 | Easy | x86 |  [(Protostar) Stack0](https://exploit-exercises.com/protostar/stack0/), [(Protostar) Stack1](https://exploit-exercises.com/protostar/stack1/), [(root-me) x86 BoF basic1](https://www.root-me.org/en/Challenges/App-System/ELF-x86-Stack-buffer-overflow-basic-1) |
 
-
-- x32 : Easy - [(Protostar) Stack0](https://exploit-exercises.com/protostar/stack0/), [(Protostar) Stack1](https://exploit-exercises.com/protostar/stack1/), [(root-me) x86 BoF basic1](https://www.root-me.org/en/Challenges/App-System/ELF-x86-Stack-buffer-overflow-basic-1)
-
 #### 2. Environment variable usage
 
 | Difficulty | Platform | Exercise |
 |------------|----------|----------|
 | Easy | x86 |  [(Protostar) Stack2](https://exploit-exercises.com/protostar/stack2/) |
 
-- x32 : Easy - [(Protostar) Stack2](https://exploit-exercises.com/protostar/stack2/)
 
 #### 3. Overwrite LR (to be other function like flag printing)
 
@@ -45,12 +43,12 @@ The corresponding ctf problem and wargame will be curated based on each required
 | Easy | x86 | [(Protostar) Stack3](https://exploit-exercises.com/protostar/stack3/), [(Protostar) Stack4](https://exploit-exercises.com/protostar/stack4/), [(root-me) x86 BoF basic2](https://www.root-me.org/en/Challenges/App-System/) |
 |  | x64 |  [(root-me) x64 BoF basic](https://www.root-me.org/en/Challenges/App-System/ELF-x64-Stack-buffer-overflow-basic) |
 
-- x32 : Easy - [(Protostar) Stack3](https://exploit-exercises.com/protostar/stack3/), [(Protostar) Stack4](https://exploit-exercises.com/protostar/stack4/), [(root-me) x86 BoF basic2](https://www.root-me.org/en/Challenges/App-System/ELF-x86-Stack-buffer-overflow-basic-2)
-- x64 : [(root-me) x64 BoF basic](https://www.root-me.org/en/Challenges/App-System/ELF-x64-Stack-buffer-overflow-basic)
 
 #### 4. Overwrite LR + shellCode injection
 
-- x32 : Easy - [(Protostar) Stack5](https://exploit-exercises.com/protostar/stack5/)
+| Difficulty | Platform | Exercise |
+|------------|----------|----------|
+| Easy | x86 | [(Protostar) Stack5](https://exploit-exercises.com/protostar/stack5/) |
 
 #### 5. Ret2Libc (Return-to-Libc)
 
@@ -63,7 +61,9 @@ The corresponding ctf problem and wargame will be curated based on each required
 
 #### 3. Arbitrary memory write using `%n`
 
-- x32 : Easy - [Protostar: Format1](https://exploit-exercises.com/protostar/format1/)
+| Difficulty | Platform | Exercise |
+|------------|----------|----------|
+| Easy       | x86      | Easy - [Protostar: Format1](https://exploit-exercises.com/protostar/format1/) |
 
 
 ### (3) ROP (Return Oriented Programming)
