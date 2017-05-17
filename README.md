@@ -4,7 +4,7 @@
 
 The corresponding ctf problem and wargame will be curated based on each required skill. 
 
-:caution: You may need the login account for browsing each wargame properly.
+:exclamation:  You may need the login account for browsing each wargame properly.
 
 ## :pencil:  Wargames on system hacking
 
