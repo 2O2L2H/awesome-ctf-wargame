@@ -8,16 +8,17 @@ The corresponding ctf problem and wargame will be curated based on each required
 
 | Difficulty | Wargames | 
 |------------|----------|
-| Easy | [Exploit-exercise : Protostar](https://exploit-exercises.com/protostar/) |
-| Medium | [Root Me : App System](https://www.root-me.org/en/Challenges/App-System/), [PwnerRank : Binary Exploitation](https://www.pwnerrank.com/categories/binary-exploitation/) |
+| Easy | [(Exploit-exercise) Protostar](https://exploit-exercises.com/protostar/) |
+| Medium | [(Root-me) App System](https://www.root-me.org/en/Challenges/App-System/), [(PwnerRank) Binary Exploitation](https://www.pwnerrank.com/categories/binary-exploitation/) |
 | High | [Pwnable.kr](http://pwnable.kr/) |
+
+### (0) TIP  :+1: 
+
+- Generate and search pattern string for exploit development : [exploit-pattern @github](https://github.com/Svenito/exploit-pattern)
+- Multi-Architecture GDB Enhanced Features for Exploiters & Reverse-Engineers : [gef @github](https://github.com/hugsy/gef)
 
 
 ### (1) BoF (Buffer Overflow)
-
-#### 0. TIP  :+1: 
-
-- Generate and search pattern string for exploit development : [exploit-pattern @github](https://github.com/Svenito/exploit-pattern)
 
 #### 1. Overwrite local variable
 
