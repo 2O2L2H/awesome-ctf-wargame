@@ -7,6 +7,8 @@ The corresponding ctf problem and wargame will be curated based on each required
 
 ## System hacking / Pwnable
 
+![img](https://raw.githubusercontent.com/2O2L2H/awesome-ctf-wargame/master/roadmap/pwnable/pwnable.png)
+
 ### Basic introduction
 
 - [Pwning Pwnables](https://dc416.com/wp-content/uploads/2016/07/Session-2-Harold-Rodriguez-Pwning-pwnables.pdf)
