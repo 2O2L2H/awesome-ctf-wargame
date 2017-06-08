@@ -4,6 +4,18 @@ slidenumbers: true
 # [fit] Chap2. PWN
 
 ---
+# binary
+
+- static vs dynamic
+  - `statically linked`
+  - `dynamically linked` = binary + `libc` + ...
+- stripped
+  - `not stripped` : symbol exists like `main()`, `open()`, ...
+  - `stripped` : **no symbol**, should use **address**.
+
+
+
+---
 # [fit] Threat Mitigation
 
 ---
@@ -88,7 +100,19 @@ $ gcc ... -fno-stack-protector
 ---
 # [fit] Format String Bug
 
+
 ---
+# Format String
+
+![left fit](./fig/format_string.jpg)
+
+- 값 : `%x`, `%p`
+- 포인터 : `%s`, `%n`
+
+
+---
+
+`fsb.c`
 
 ```c
 #include <stdio.h>
@@ -106,6 +130,7 @@ int main(int argc, char *argv[])
 }
 ```
 
+
 ---
 
 ![inline fit](./fig/stack.png)
@@ -119,19 +144,134 @@ AAAA,0x80,0xf7fb25a0,0x565555f7,0x41414141,0x2c70252c,0x252c7025,0x70252c70,...
 ![fit](./fig/stack2.png)
 
 ---
-# Read
+# Analysis : `%x`, `%p`
 
-#### `AAAA%p%p%p%p%p` => `AAAA,0x80,0xf7fb25a0,0x565555f7,0x41414141,0x2c70252c,`
-#### `AAAA%4$p` => `n$` = `X n`
-#### `AAAA%4$s`
+# Read : `%s`
+
+# Write : `%n`
+
+- `%n`이 사용되기 직전에 출력된 문자들의 수가 **`%n`에 대응하는 수에 저장**
+
+
+---
+### [#1] `fsb-ex1.c`
+
+```c
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+  int pos, x=235, y=93;
+  printf("%d %n %d\n", x, &pos, y);
+  printf("The offset was %d\n", pos);
+}
+
+```
+
+
+---
+```c
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+  int pos, x=235, y=93;
+  printf("%d %n %d\n", x, &pos, y);
+  printf("The offset was %d\n", pos);
+}
+
+```
+
+```bash
+$ ./fsb-ex1
+235  93
+The offset was 4
+```
+
+---
+### [#2] `fsb-ex2.c`
+
+```c
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+  int pos, x=235, y=93;
+  printf("%d  %n %d\n", x, &pos, y);
+  printf("The offset was %d\n", pos);
+}
+```
+
+---
+### [#2] `fsb-ex2.c`
+
+```c
+#include <stdio.h>
+
+int main(int argc, char *argv[])
+{
+  int pos, x=235, y=93;
+  printf("%d  %n %d\n", x, &pos, y);
+  printf("The offset was %d\n", pos);
+}
+```
+
+```bash
+$ ./fsb-ex2
+235   93
+The offset was 5
+```
+
+
 
 ---
 
-# Write
+`fsb-write.c`
 
-#### `AAAA%4$n` : 그동안 write 했던 byte size 를 그 주소에 write
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-- 32byte 주소를 한 번에 적으려면 **그 주소 길이**만큼 write 해야함 ?
+int main(int argc, char *argv[])
+{
+  char text[1024];
+  static int test_val = -72;
+
+  if(argc<2) {
+    printf("사용법: %s <출력할 테스트>\n", argv[0]);
+    exit(0);
+  }
+
+  strcpy(text, argv[1]);
+
+  printf("[+] Good example:\n");
+  printf("%s\n", text);
+
+  printf("[-] Bad example:\n");
+  printf(text);
+
+  printf("\n[*] test_val @ %p = %d, %p\n", &test_val, test_val, test_val);
+
+  return 0;
+}
+```
+
+
+---
+# How to attack
+
+![left fit](./fig/stack.png)
+
+- 입력한 값 중에서 **어느 형식 지정자**에서 출력되는지 확인.
+
+```
+AAAA,0x80,0xf7fb25a0,0x565555f7,0x41414141,0x2c70252c,
+```
+
+- `AAAA%4$x`
+- Read : `AAAA%4$s`
+
 - `%n` : 4 bytes
 - `%hn` : 2 bytes
 - `%hhn` : 1 bytes

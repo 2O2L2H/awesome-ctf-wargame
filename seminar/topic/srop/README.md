@@ -82,6 +82,17 @@ ex += p32(elf.bss())            # first argument of execve : buf
 ex += p32(int0x80)              # invoke system calls
 ```
 
+
+---
+# exec
+
+PATH 에 등록된 디렉토리를 참고하여 다른 프로그램을 실행하고 종료
+
+![inline fit](./fig/exec.png)
+
+![inline fit](./fig/exec2.png)
+
+
 ---
 # [fit] Defcon 2016 feedme
 
