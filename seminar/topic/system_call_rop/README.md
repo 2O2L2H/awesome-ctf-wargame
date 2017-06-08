@@ -1,7 +1,7 @@
 footer: © 2O2L2H Book/Seminar, 2017
 slidenumbers: true
 
-# [fit] SROP 
+# [fit] System Call ROP 
 
 ### June 8, 2017   2O2L2H/humb1ec0ding
 
