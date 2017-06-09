@@ -33,10 +33,10 @@ The corresponding ctf problem and wargame will be curated based on each required
 
 | Technique | Knowledge     |  Best Training :thumbsup: |
 |-----------|---------------|-----------|
-| shellcode injection |    |   |
+| shellcode injection | **shellcode**   | [pico-ctf-2013/overflow-4](https://github.com/ctfs/write-ups-2013/tree/master/pico-ctf-2013/overflow-4)  |
 
 
-- [Easy | x86] [(Protostar) Stack5](https://exploit-exercises.com/protostar/stack5/)
+- [Easy | x86] : [(Protostar) Stack5](https://exploit-exercises.com/protostar/stack5/)
 
 ### Ret2PLT, Ret2Libc, ROP
 
