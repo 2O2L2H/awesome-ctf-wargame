@@ -45,12 +45,21 @@ The corresponding ctf problem and wargame will be curated based on each required
 - [Easy | x86] : [pico-ctf-2013/rop2](https://github.com/ctfs/write-ups-2013/tree/master/pico-ctf-2013/rop-2)
 
 
-### ROP + ASLR Bypass (Mem Leak)
+### Threat Mitigation Bypass
+
+#### ASLR : **Mem Leak**
 
 | Technique | Knowledge     |  Best Training :thumbsup: |
 |-----------|---------------|-----------|
-| ROP (ASLR Bypass) | **ROP, Mem leak**  |  [pico ctf 2013/rop3](https://github.com/ctfs/write-ups-2013/tree/master/pico-ctf-2013/rop-3)         |
+| ASLR Bypass | **ROP, Mem leak**  |  [pico ctf 2013/rop3](https://github.com/ctfs/write-ups-2013/tree/master/pico-ctf-2013/rop-3)         |
 
+#### Canary
+
+#### PIE
+
+| Technique | Knowledge     |  Best Training :thumbsup: |
+|-----------|---------------|-----------|
+| Address Calac  | **ROP, Mem Leak, Address offset** | [defcon 2015 / r0pbaby](https://github.com/ctfs/write-ups-2015/tree/master/defcon-qualifier-ctf-2015/babys-first/r0pbaby) |
 
 
 ### Format String
