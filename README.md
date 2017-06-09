@@ -7,8 +7,6 @@ The corresponding ctf problem and wargame will be curated based on each required
 
 ## System hacking / Pwnable
 
-![img](https://raw.githubusercontent.com/2O2L2H/awesome-ctf-wargame/master/roadmap/pwnable/pwnable.png)
-
 ### Basic introduction
 
 - [Pwning Pwnables](https://dc416.com/wp-content/uploads/2016/07/Session-2-Harold-Rodriguez-Pwning-pwnables.pdf)
@@ -75,6 +73,8 @@ The corresponding ctf problem and wargame will be curated based on each required
 
 ### Exploitation technique  :star2:
 
+![img](https://raw.githubusercontent.com/2O2L2H/awesome-ctf-wargame/master/roadmap/pwnable/pwnable.png)
+
 [@Pwning Pwnables](https://dc416.com/wp-content/uploads/2016/07/Session-2-Harold-Rodriguez-Pwning-pwnables.pdf)
 
 - **Jump to payload**
@@ -84,9 +84,6 @@ The corresponding ctf problem and wargame will be curated based on each required
     - Overwrite pointer in GOT with pointer to another location
 - **Code re-use (ret2libc, ret2plt, ROP)**
     - Make use of existing code and instructions to exploit the binary 
-
-
-
 
 ### TIP & Tools  :+1: 
 
