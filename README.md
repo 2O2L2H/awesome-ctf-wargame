@@ -13,6 +13,57 @@ The corresponding ctf problem and wargame will be curated based on each required
 
 - [Pwning Pwnables](https://dc416.com/wp-content/uploads/2016/07/Session-2-Harold-Rodriguez-Pwning-pwnables.pdf)
 
+###  Wargames :pencil: 
+
+| Difficulty | Wargames | 
+|------------|----------|
+| Easy | [(Exploit-exercise) Protostar](https://exploit-exercises.com/protostar/) |
+| Medium | [(Root-me) App System](https://www.root-me.org/en/Challenges/App-System/), [(PwnerRank) Binary Exploitation](https://www.pwnerrank.com/categories/binary-exploitation/) |
+| High | [Pwnable.kr](http://pwnable.kr/) |
+
+## BoF (Buffer Overflow)
+
+- Overwrite local variable
+    - [Easy | x86] : [(Protostar) Stack0](https://exploit-exercises.com/protostar/stack0/), [(Protostar) Stack1](https://exploit-exercises.com/protostar/stack1/), [(root-me) x86 BoF basic1](https://www.root-me.org/en/Challenges/App-System/ELF-x86-Stack-buffer-overflow-basic-1)
+- Environment variable usage
+    - [Easy | x86] : [(Protostar) Stack2](https://exploit-exercises.com/protostar/stack2/), [(root-me) x86 basic4](https://www.root-me.org/en/Challenges/App-System/ELF-x86-Stack-buffer-overflow-basic-4)
+- Overwrite EIP (to be other function like flag printing)
+    - [Easy | x86] : [picoctf-2013/rop1](https://github.com/ctfs/write-ups-2013/tree/master/pico-ctf-2013/rop-1),  [(Protostar) Stack3](https://exploit-exercises.com/protostar/stack3/), [(Protostar) Stack4](https://exploit-exercises.com/protostar/stack4/), [(root-me) x86 BoF basic2](https://www.root-me.org/en/Challenges/App-System/) 
+    - [Easy | x64] : [(root-me) x64 BoF basic](https://www.root-me.org/en/Challenges/App-System/ELF-x64-Stack-buffer-overflow-basic)
+
+### Overwrite EIP + shellCode injection
+
+| Technique | Knowledge     |  Best Training :thumbsup: |
+|-----------|---------------|-----------|
+| shellcode injection |    |   |
+
+
+- [Easy | x86] [(Protostar) Stack5](https://exploit-exercises.com/protostar/stack5/)
+
+### Ret2PLT, Ret2Libc, ROP
+
+- [Easy | x86] : [pico-ctf-2013/rop2](https://github.com/ctfs/write-ups-2013/tree/master/pico-ctf-2013/rop-2)
+
+
+### ROP + ASLR Bypass (Mem Leak)
+
+| Technique | Knowledge     |  Best Training :thumbsup: |
+|-----------|---------------|-----------|
+| ROP (ASLR Bypass) | **ROP, Mem leak**  |  [pico ctf 2013/rop3](https://github.com/ctfs/write-ups-2013/tree/master/pico-ctf-2013/rop-3)         |
+
+
+
+### Format String
+
+#### Arbitrary memory read
+
+#### Direct Parameter Access (`n$`)
+
+#### Arbitrary memory write using `%n`
+
+- [Easy | x86] : [Protostar: Format1](https://exploit-exercises.com/protostar/format1/) |
+
+
 ### Exploitation technique  :star2:
 
 [@Pwning Pwnables](https://dc416.com/wp-content/uploads/2016/07/Session-2-Harold-Rodriguez-Pwning-pwnables.pdf)
@@ -50,88 +101,6 @@ The corresponding ctf problem and wargame will be curated based on each required
 
 - niklasb/libc-database: Build a database of libc offsets to simplify exploitation : [libc-database](https://github.com/niklasb/libc-database)
 
-
-###  Wargames :pencil: 
-
-| Difficulty | Wargames | 
-|------------|----------|
-| Easy | [(Exploit-exercise) Protostar](https://exploit-exercises.com/protostar/) |
-| Medium | [(Root-me) App System](https://www.root-me.org/en/Challenges/App-System/), [(PwnerRank) Binary Exploitation](https://www.pwnerrank.com/categories/binary-exploitation/) |
-| High | [Pwnable.kr](http://pwnable.kr/) |
-
-
-
-### (1) BoF (Buffer Overflow)
-
-#### 1.1 Overwrite local variable
-
-| Difficulty | Platform | Exercise |
-|------------|----------|----------|
-| Easy | x86 |  [(Protostar) Stack0](https://exploit-exercises.com/protostar/stack0/), [(Protostar) Stack1](https://exploit-exercises.com/protostar/stack1/), [(root-me) x86 BoF basic1](https://www.root-me.org/en/Challenges/App-System/ELF-x86-Stack-buffer-overflow-basic-1) |
-
-#### 1.2 Environment variable usage
-
-| Difficulty | Platform | Exercise |
-|------------|----------|----------|
-| Easy | x86 |  [(Protostar) Stack2](https://exploit-exercises.com/protostar/stack2/), [(root-me) x86 basic4](https://www.root-me.org/en/Challenges/App-System/ELF-x86-Stack-buffer-overflow-basic-4) |
-
-
-#### 1.3 Overwrite LR (to be other function like flag printing)
-
-| Difficulty | Platform | Exercise |
-|------------|----------|----------|
-| Easy | x86 | [(Protostar) Stack3](https://exploit-exercises.com/protostar/stack3/), [(Protostar) Stack4](https://exploit-exercises.com/protostar/stack4/), [(root-me) x86 BoF basic2](https://www.root-me.org/en/Challenges/App-System/) |
-|  | x64 |  [(root-me) x64 BoF basic](https://www.root-me.org/en/Challenges/App-System/ELF-x64-Stack-buffer-overflow-basic) |
-
-
-#### 1.4 Overwrite LR + shellCode injection
-
-| Difficulty | Platform | Exercise |
-|------------|----------|----------|
-| Easy | x86 | [(Protostar) Stack5](https://exploit-exercises.com/protostar/stack5/) |
-
-#### 1.5 Ret2Libc (Return-to-Libc)
-
-
-### (2) Integer overflow
-
-
-### (3) Understanding `x64`
-
-
-### (4) Format String
-
-#### 4.1 Arbitrary memory read
-
-#### 4.2 Direct Parameter Access (`n$`)
-
-#### 4.3 Arbitrary memory write using `%n`
-
-| Difficulty | Platform | Exercise |
-|------------|----------|----------|
-| Easy       | x86      | Easy - [Protostar: Format1](https://exploit-exercises.com/protostar/format1/) |
-
-
-### (5) ROP (Return Oriented Programming)
-
-
-### (6) Exploitation mitigations
-
-#### 6.1 ASLR (Address Space Layout Randomization)
-
-- Look for non-randomized location to store payload
-- Leak a stack or libc address
-
-#### 6.2 NX (No-eXecute)
- - Code re-use attacks like ROP to make a memory location executable
-
-#### 6.3 Stack canary
-
-- If the binary calls fork(), brute force the canary 
-- Leak the canary
-
-
-### (7) Heap exploitation
 
 
 ## Cryptography
