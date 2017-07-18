@@ -1,13 +1,11 @@
-<<<<<<< HEAD
 ### 설치 방법
   
 > * protostar vm on parallels
 > * root/godmod and ifconfig
-=======
+
 ## Wargame/Protostar
 
 ## VM Configuration
->>>>>>> 395bbcff115b2d8e185bfc323c9ef149ab077038
 
 - protostar vm (parallels, vmware, vmplayer, ...)
 - Login as admin id `root/godmod` and check IP using `ifconfig`
