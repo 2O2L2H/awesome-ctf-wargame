@@ -143,4 +143,10 @@ Configuration file: /Users/tkhwang/_2O2L2H/github/2O2L2H.github.io/_config.yml
   Server running... press ctrl-c to stop.
 ```
 
+---
+## Commit
 
+- `git status`
+- `git add XXXX`
+- `git commit -m "MESSAGE"`
+- `git push`
